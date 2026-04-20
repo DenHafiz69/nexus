@@ -1,0 +1,12 @@
+<div class="bg-gray-50 border border-gray-200 rounded-lg p-4 w-full text-center">
+    <p class="text-sm text-gray-600 mb-3 font-medium">QR Code for: <span class="text-gray-900">{{ text }}</span></p>
+    <div class="bg-white p-2 inline-block rounded-lg shadow-sm border mb-4">
+        <img src="{{ qr_data_uri }}" alt="Generated QR Code" class="w-48 h-48 object-contain">
+    </div>
+    <div>
+        <a href="{{ qr_data_uri }}" download="nexus-qr.png" class="inline-flex justify-center items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 w-full transition-colors">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+            Download PNG
+        </a>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="text-center mb-10">
+    <h1 class="text-4xl font-extrabold text-gray-900 mb-2">Welcome to Nexus</h1>
+    <p class="text-lg text-gray-600">Your all-in-one productivity multitool.</p>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    
+    <!-- Link Shortener Card -->
+    <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+        <div class="p-8">
+            <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold mb-1">Tool 1</div>
+            <h2 class="block mt-1 text-2xl leading-tight font-bold text-black mb-4">Link Shortener</h2>
+            <p class="mt-2 text-gray-500 mb-6">Paste your long URL below to create a concise, easy-to-share link.</p>
+            
+            <form hx-post="/shorten" hx-target="#shortener-result" class="space-y-4">
+                <div>
+                    <label for="url" class="sr-only">URL</label>
+                    <input type="url" name="url" id="url" required placeholder="https://your-very-long-url.com" 
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                </div>
+                <button type="submit" 
+                    class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-md transition-colors duration-200">
+                    Shorten Link
+                </button>
+            </form>
+            
+            <!-- HTMX Target -->
+            <div id="shortener-result" class="mt-6"></div>
+        </div>
+    </div>
+
+    <!-- QR Code Generator Card -->
+    <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+        <div class="p-8">
+            <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold mb-1">Tool 2</div>
+            <h2 class="block mt-1 text-2xl leading-tight font-bold text-black mb-4">QR Generator</h2>
+            <p class="mt-2 text-gray-500 mb-6">Enter text or a URL to instantly generate a downloadable QR code.</p>
+            
+            <form hx-post="/generate-qr" hx-target="#qr-result" class="space-y-4">
+                <div>
+                    <label for="text" class="sr-only">Text or URL</label>
+                    <input type="text" name="text" id="text" required placeholder="Enter text to encode..." 
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                </div>
+                <button type="submit" 
+                    class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-md transition-colors duration-200">
+                    Generate QR
+                </button>
+            </form>
+            
+            <!-- HTMX Target -->
+            <div id="qr-result" class="mt-6 flex justify-center"></div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

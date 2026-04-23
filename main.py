@@ -3,6 +3,7 @@ import random
 import io
 import base64
 import qrcode
+from datetime import datetime
 from fastapi import FastAPI, Request, Form, Depends, HTTPException
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
@@ -77,8 +78,16 @@ async def generate_qr(request: Request, text: str = Form(...)):
     # Encode as base64 string to embed directly in HTML
     img_b64 = base64.b64encode(buf.getvalue()).decode("utf-8")
     
+    # Generate timestamp-based filename
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    filename = f"qr-{timestamp}.png"
+    
     return templates.TemplateResponse(
         request=request,
         name="partials/qr_code.html", 
-        context={"qr_data_uri": f"data:image/png;base64,{img_b64}", "text": text}
+        context={
+            "qr_data_uri": f"data:image/png;base64,{img_b64}", 
+            "text": text,
+            "filename": filename
+        }
     )

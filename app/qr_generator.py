@@ -9,6 +9,10 @@ from fastapi.templating import Jinja2Templates
 router = APIRouter()
 templates = Jinja2Templates(directory="templates")
 
+@router.get("/qr-generator", response_class=HTMLResponse)
+async def qr_generator_page(request: Request):
+    return templates.TemplateResponse(request=request, name="qr_generator.html")
+
 @router.post("/generate-qr", response_class=HTMLResponse)
 async def generate_qr(request: Request, text: str = Form(...)):
     qr = qrcode.QRCode(

@@ -15,6 +15,10 @@ def generate_short_code(length=6):
     chars = string.ascii_letters + string.digits
     return ''.join(random.choice(chars) for _ in range(length))
 
+@router.get("/url-shortener", response_class=HTMLResponse)
+async def url_shortener_page(request: Request):
+    return templates.TemplateResponse(request=request, name="url_shortener.html")
+
 @router.post("/shorten", response_class=HTMLResponse)
 async def shorten_url(request: Request, url: str = Form(...), db: Session = Depends(get_db)):
     if not url.startswith(("http://", "https://")):

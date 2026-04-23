@@ -1,6 +1,6 @@
 # 🌌 Nexus: The Digital Swiss Army Knife You Didn't Ask For
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Build Status](https://img.shields.io/badge/status-active-brightgreen.svg)]()
 [![Ego Boost](https://img.shields.io/badge/over--engineered-definitely-orange)]()
 
@@ -56,3 +56,9 @@ Nexus is not responsible for:
 ---
 
 Built with ☕ and existential dread by [DenHafiz69](https://github.com/DenHafiz69).
+
+---
+
+## 📜 License
+
+This project is licensed under the **GNU General Public License v3.0**. See the [LICENSE](file:///home/denhafiz/Coding/nexus/LICENSE) file for the full text. Because freedom isn't just for politicians.

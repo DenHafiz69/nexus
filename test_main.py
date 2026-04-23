@@ -66,3 +66,12 @@ def test_generate_qr():
     response = client.post("/generate-qr", data={"text": "https://example.com"})
     assert response.status_code == 200
     assert b"data:image/png;base64," in response.content
+
+def test_text_converter_page():
+    response = client.get("/text-converter")
+    assert response.status_code == 200
+
+def test_convert_text():
+    response = client.post("/convert-text", data={"text": "hello WORLD", "case_type": "alternatingcase"})
+    assert response.status_code == 200
+    assert b"HeLlO wOrLd" in response.content

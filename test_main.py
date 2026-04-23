@@ -8,8 +8,8 @@ os.environ["DATABASE_URL"] = "sqlite:///./test.db"
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from database import Base, get_db
-from main import app
+from app.database import Base, get_db
+from app.main import app
 
 # Set up an in-memory SQLite database for testing
 SQLALCHEMY_DATABASE_URL = "sqlite:///./test.db"
@@ -52,7 +52,7 @@ def test_redirect_url():
     
     # Inspect the db for the code since HTML is returned
     db = TestingSessionLocal()
-    from models import URLItem
+    from app.models import URLItem
     item = db.query(URLItem).first()
     assert item is not None
     db.close()
